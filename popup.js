@@ -1,18 +1,20 @@
-const time = document.getElementById("time");
+const timeElement = document.getElementById("time");
 const nameElement = document.getElementById("name");
-const currentTime = new Date().toLocaleTimeString();
+const timerElement = document.getElementById("timer");
 
-time.textContent = `The time is: ${currentTime}`;
-
-chrome.action.setBadgeText(
-  {
-    text: "TIME",
-  },
-  () => {
-    console.log("Finished setting badge text.");
-  }
-);
+function updateTime() {
+  chrome.storage.local.get(["timer"], (res) => {
+    const time = res.timer ?? 0;
+    timerElement.textContent = `The timer is at ${time}`;
+  });
+  const currentTime = new Date().toLocaleTimeString();
+  time.textContent = `The time is: ${currentTime} seconds`;
+}
 
 chrome.storage.sync.get(["name"], (res) => {
-  nameElement.textContent = `Your name is ${res.name}`;
+  const name = res.name ?? "???";
+  nameElement.textContent = `Your name is ${name}`;
 });
+
+updateTime();
+setInterval(updateTime, 1000);
