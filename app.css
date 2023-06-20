@@ -1,8 +1,36 @@
 body {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
+  background-color: #333533;
 }
 
 h1 {
-  color: aquamarine;
+  color: #ffd100;
+  text-align: center;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  font-size: 32px;
+  height: 100px;
+  width: 100px;
+  border: 5px solid #ffd100;
+  border-radius: 50%;
+  text-align: center;
+  color: #ffd100;
+}
+
+button {
+  font-weight: 700;
+  text-decoration: none;
+  background: #ffee32;
+  border-radius: 10px;
+  margin: auto;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: #333533;
 }
